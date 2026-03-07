@@ -209,6 +209,81 @@ cd agent-skills
 ./install.sh skill <skill-name> --codex         # or --gemini, --openclaw, --all
 ```
 
+## Why skills instead of CLAUDE.md?
+
+You can absolutely write planning and docs-sync instructions directly in your
+`CLAUDE.md` (or `AGENTS.md`, `GEMINI.md`, etc.). It works. But skills solve a
+different problem — here's how they compare:
+
+### What CLAUDE.md is great at
+
+Your project file (`CLAUDE.md`) is the right place for things specific to *your* repo:
+coding conventions, architecture decisions, build commands, tech stack choices. It's
+visible, simple, and has zero dependencies.
+
+### Where skills add value
+
+Skills handle *workflows* — things that work the same way across every repo you touch.
+
+**Install once, use everywhere.** A skill installed at user scope works in every repo
+automatically. Writing "how to create a good proposal doc with phased issues" in
+`CLAUDE.md` means copying those instructions into every repo — and updating all of
+them when you improve the workflow.
+
+**Cross-platform.** One skill definition works in Claude Code, Codex, Gemini CLI, and
+OpenClaw. With project files, you'd maintain the same instructions in `CLAUDE.md` *and*
+`AGENTS.md` *and* `GEMINI.md` — per repo.
+
+**Small config replaces long instructions.** A 10-line `.project-planner.yml` replaces
+pages of prompt engineering. The skill already knows how to triage ideas, structure
+proposals, and file issues. You just tell it where your templates live.
+
+**Centrally maintained.** When a skill improves — better edge-case handling, new
+capabilities — you run `update` and get the improvements everywhere. With `CLAUDE.md`,
+you maintain the instructions yourself and they drift over time.
+
+**Repo-aware auto-discovery.** Skills discover your repo structure (issue templates,
+docs layout, site config) automatically. In `CLAUDE.md` you'd spell out every path
+and template explicitly.
+
+### The short version
+
+| | CLAUDE.md | Skills |
+|---|---|---|
+| Best for | Project-specific conventions | Cross-project workflows |
+| Scope | One repo | Every repo you touch |
+| Platforms | One agent | All supported agents |
+| Maintenance | Manual, per repo | Central, update once |
+| Config | Free-form instructions | Small YAML + auto-discovery |
+
+They're complementary. `CLAUDE.md` tells the agent about *your project*. Skills teach
+it reusable workflows that work the same way everywhere.
+
+---
+
+## Use cases
+
+**Solo dev with many repos.** You work on a main project, a few side projects, some
+open-source contributions. Install once at user scope — every repo gets consistent
+planning and docs workflows without any per-repo setup.
+
+**Team standardization.** Your team files issues in different formats. Some PRs update
+docs, most don't. Everyone installs the same marketplace and gets the same issue
+structure, the same docs-sync behavior, the same proposal format — without
+maintaining a shared wiki page of "how to file a good issue."
+
+**New repo bootstrap.** Starting a new project? `install.sh templates project-planner`
+scaffolds issue templates, a proposal template, and config in seconds.
+No copy-pasting from another repo.
+
+**Multi-agent workflows.** Running an orchestrator (like OpenClaw) that spawns coding
+agents? Both layers get the same skills — the orchestrator uses project-planner to
+create issues, the coding agent uses docs-sync to update docs after implementing them.
+
+**Cross-platform teams.** Some teammates prefer Claude Code, others use Codex or
+Gemini CLI. Skills work identically across all of them — same behavior, same output
+format, no per-tool instructions.
+
 ## License
 
 MIT
