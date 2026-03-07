@@ -1,0 +1,37 @@
+{
+  "name": "chriscox-skills",
+  "owner": {
+    "name": "Chris Cox"
+  },
+  "metadata": {
+    "description": "Reusable skills for AI coding agents — project planning and documentation management.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "project-planner",
+      "source": "./plugins/project-planner",
+      "description": "Triage ideas into proposals, feature issues, or bug reports. Repo-aware with auto-discovery.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Chris Cox"
+      },
+      "license": "MIT",
+      "keywords": ["project-planning", "issues", "proposals"],
+      "category": "workflow"
+    },
+    {
+      "name": "docs-sync",
+      "source": "./plugins/docs-sync",
+      "description": "Keep documentation in sync with code changes. Content sync, site management, and docs audit.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Chris Cox"
+      },
+      "license": "MIT",
+      "keywords": ["documentation", "docs-sync", "mkdocs"],
+      "category": "documentation"
+    }
+  ]
+}

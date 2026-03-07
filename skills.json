@@ -1,0 +1,14 @@
+{
+  "skills": [
+    {
+      "name": "project-planner",
+      "path": "skills/project-planner",
+      "description": "Triage ideas, features, and bugs into proposals, feature issues, or bug reports. Repo-aware with auto-discovery."
+    },
+    {
+      "name": "docs-sync",
+      "path": "skills/docs-sync",
+      "description": "Keep project documentation in sync with code changes. Manages doc site navigation."
+    }
+  ]
+}

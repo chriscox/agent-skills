@@ -1,0 +1,14 @@
+{
+  "name": "docs-sync",
+  "version": "1.0.0",
+  "description": "Keep project documentation in sync with code changes. Content sync, site management, and docs audit with role-based doc mapping.",
+  "author": {
+    "name": "Chris Cox",
+    "url": "https://github.com/chriscox"
+  },
+  "homepage": "https://github.com/chriscox/agent-skills",
+  "repository": "https://github.com/chriscox/agent-skills",
+  "license": "MIT",
+  "keywords": ["documentation", "docs-sync", "mkdocs", "docusaurus"],
+  "skills": "./skills/"
+}
