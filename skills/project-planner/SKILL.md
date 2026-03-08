@@ -82,12 +82,42 @@ For big ideas that need phases and design.
 6. Create the proposal doc at `docs/proposals/<name>.md`
 7. If `mkdocs.yml` exists, add the proposal to the nav under Proposals
 8. If `docs/proposals/index.md` exists, add to the Active Proposals list
-9. Create a GitHub issue for each phase using `gh issue create`:
-   - Title: `<Proposal name>: Phase N — <phase name>`
-   - Body: phase goal, acceptance criteria, tasks as checklist, link to proposal
+9. Create a tracking issue (parent) using `gh issue create`:
+   - Title: `<Proposal name>` (no "Phase" prefix — this is the umbrella issue)
+   - Body: link to the proposal doc, overall acceptance criteria, summary of phases
    - Label: `enhancement`
-10. Update the proposal doc with issue links for each phase
-11. Commit to a new branch and push
+   - Save the issue node ID (`gh issue view <number> --json id -q .id`)
+10. Create a GitHub issue for each phase using `gh issue create`:
+    - Title: `<Proposal name>: Phase N — <phase name>`
+    - Body: phase goal, acceptance criteria, tasks as checklist, link to proposal,
+      and a `## Tracking` section with `Parent: #<tracking-issue-number>`
+    - Label: `enhancement`
+11. Wire each phase issue as a native sub-issue of the tracking issue using GraphQL:
+    ```
+    gh api graphql -f query='
+      mutation {
+        addSubIssue(input: {
+          issueId: "<tracking-issue-node-id>"
+          subIssueId: "<phase-issue-node-id>"
+        }) { issue { id } subIssue { id } }
+      }'
+    ```
+12. Add the tracking issue link to the proposal doc header (e.g., `Tracking: #<number>`)
+13. Commit to a new branch and push
+
+### Tracking Issue Convention
+
+Every multi-phase proposal gets a **tracking issue** with **native GitHub sub-issues**
+(not markdown checkbox task lists). This gives you:
+
+- **Progress badges** — the issue list shows "2 of 5" sub-issue completion at a glance
+- **Bidirectional navigation** — parent links to children, children link back to parent
+- **Automatic updates** — when PRs close a phase issue, the tracking issue progress updates
+
+Always use the `addSubIssue` GraphQL mutation to wire parent↔child relationships.
+Markdown checkboxes (`- [ ] #123`) are just text — they don't update automatically and
+GitHub doesn't treat them as real relationships. Native sub-issues are a first-class
+GitHub feature with proper status tracking.
 
 ### Proposal Quality Checklist
 
@@ -135,6 +165,8 @@ For problems and broken behavior.
 - **Proposals stay forever** — status changes, docs never move or get deleted
 - **One proposal per feature** — don't cram multiple ideas into one doc
 - **Phases must be shippable** — each delivers user value, not just "backend work"
+- **Every multi-phase proposal gets a tracking issue** — created before phase issues
+- **Phase issues reference the tracking issue** — via `## Tracking` section in body
 - **Commit to a branch** — never push directly to main
 - **Respect repo conventions** — if the repo has CLAUDE.md or CONTRIBUTING.md, read
   and follow its branch naming, commit message, and PR conventions
