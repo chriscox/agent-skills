@@ -9,6 +9,9 @@ description: >
   which docs are stale. NOT for: writing docs from scratch for a new project (just write
   them), generating API reference docs from code comments (use typedoc/jazzy/etc.), or
   content that isn't developer documentation.
+prerequisites:
+  - git
+  - gh (GitHub CLI, authenticated via `gh auth login`)
 ---
 
 # Docs Sync
