@@ -32,7 +32,7 @@ project's conventions.
 
 | You say... | Skill creates... |
 |---|---|
-| "I have an idea for X" / "Let's plan Y" | **Proposal** — design doc with phases, acceptance criteria, and a GitHub issue per phase |
+| "I have an idea for X" / "Let's plan Y" | **Proposal** — design doc with phases, acceptance criteria, a tracking issue with native GitHub sub-issues per phase |
 | "Add a button that does X" | **Feature issue** — focused GitHub issue with acceptance criteria |
 | "X is broken when Y" | **Bug report** — GitHub issue with repro steps, expected vs actual, relevant code |
 
