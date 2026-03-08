@@ -8,12 +8,14 @@ description: >
   "let's plan this feature", or similar, (3) the user wants to break down a large
   feature into phases with GitHub issues. NOT for: actually implementing code (use
   coding-agent), reviewing PRs, or general questions about the codebase.
-prerequisites:
-  - git
-  - gh (GitHub CLI, authenticated via `gh auth login`)
 ---
 
 # Project Planner
+
+## Prerequisites
+
+- git
+- gh (GitHub CLI, authenticated via `gh auth login`)
 
 Triage user input into the right project artifact: a **proposal** (big idea with phases),
 a **feature issue** (small enhancement), or a **bug report** (something's broken).
