@@ -88,21 +88,24 @@ For big ideas that need phases and design.
    - Label: `enhancement`
    - Save the issue node ID (`gh issue view <number> --json id -q .id`)
 10. Create a GitHub issue for each phase using `gh issue create`:
-    - Title: `<Proposal name>: Phase N — <phase name>`
-    - Body: phase goal, acceptance criteria, tasks as checklist, link to proposal,
-      and a `## Tracking` section with `Parent: #<tracking-issue-number>`
-    - Label: `enhancement`
+   - Title: `<Proposal name>: Phase N — <phase name>`
+   - Body: phase goal, acceptance criteria, tasks as checklist, link to proposal,
+     and a `## Tracking` section with `Parent: #<tracking-issue-number>`
+   - Label: `enhancement`
 11. Wire each phase issue as a native sub-issue of the tracking issue using GraphQL:
-    ```
-    gh api graphql -f query='
-      mutation {
-        addSubIssue(input: {
-          issueId: "<tracking-issue-node-id>"
-          subIssueId: "<phase-issue-node-id>"
-        }) { issue { id } subIssue { id } }
-      }'
-    ```
-12. Add the tracking issue link to the proposal doc header (e.g., `Tracking: #<number>`)
+   ```
+   gh api graphql -f query='
+     mutation {
+       addSubIssue(input: {
+         issueId: "<tracking-issue-node-id>"
+         subIssueId: "<phase-issue-node-id>"
+       }) { issue { id } subIssue { id } }
+     }'
+   ```
+   If the mutation fails (repo doesn't support sub-issues, permissions),
+   fall back to listing phase issues as linked references in the tracking issue body.
+12. Update the proposal doc with phase issue links and the tracking issue
+   link in the header (e.g., `Tracking: #<number>`)
 13. Commit to a new branch and push
 
 ### Tracking Issue Convention
@@ -130,6 +133,7 @@ Before committing, verify:
 - [ ] Acceptance criteria are testable (not vague)
 - [ ] Open questions section exists (even if empty)
 - [ ] Related section links to relevant docs, issues, or design docs
+- [ ] Tracking issue exists with all phase issues wired as sub-issues
 - [ ] Status is set to "Ready" (if issues created) or "Draft" (if not)
 
 ## Workflow: Feature Issue
