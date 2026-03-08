@@ -1,6 +1,6 @@
 {
   "name": "project-planner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Triage ideas into proposals, feature issues, or bug reports. Repo-aware with auto-discovery of templates, conventions, and config.",
   "author": {
     "name": "Chris Cox",

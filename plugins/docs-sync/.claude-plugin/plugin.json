@@ -1,6 +1,6 @@
 {
   "name": "docs-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Keep project documentation in sync with code changes. Content sync, site management, and docs audit with role-based doc mapping.",
   "author": {
     "name": "Chris Cox",
