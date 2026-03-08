@@ -92,6 +92,8 @@ For big ideas that need phases and design.
    - Body: phase goal, acceptance criteria, tasks as checklist, link to proposal,
      and a `## Tracking` section with `Parent: #<tracking-issue-number>`
    - Label: `enhancement`
+   - After creating each phase issue, capture its node ID:
+     `gh issue view <phase-issue-number> --json id -q .id`
 11. Wire each phase issue as a native sub-issue of the tracking issue using GraphQL:
    ```
    gh api graphql -f query='
