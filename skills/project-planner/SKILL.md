@@ -133,7 +133,7 @@ Before committing, verify:
 - [ ] Acceptance criteria are testable (not vague)
 - [ ] Open questions section exists (even if empty)
 - [ ] Related section links to relevant docs, issues, or design docs
-- [ ] Tracking issue exists with all phase issues wired as sub-issues
+- [ ] Tracking issue exists with all phase issues wired as sub-issues (or, if unsupported, linked from the tracking issue body)
 - [ ] Status is set to "Ready" (if issues created) or "Draft" (if not)
 
 ## Workflow: Feature Issue
