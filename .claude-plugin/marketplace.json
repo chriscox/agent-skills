@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Reusable skills for AI coding agents — project planning and documentation management.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -13,7 +13,7 @@
       "name": "project-planner",
       "source": "./plugins/project-planner",
       "description": "Triage ideas into proposals, feature issues, or bug reports. Repo-aware with auto-discovery.",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Chris Cox"
       },
