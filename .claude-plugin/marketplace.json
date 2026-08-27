@@ -4,7 +4,7 @@
     "name": "Chris Cox"
   },
   "metadata": {
-    "description": "Reusable skills for AI coding agents — project planning and documentation management.",
+    "description": "Reusable skills for AI coding agents — project planning, documentation management, and local runtime safety.",
     "version": "1.0.3",
     "pluginRoot": "./plugins"
   },
@@ -18,7 +18,11 @@
         "name": "Chris Cox"
       },
       "license": "MIT",
-      "keywords": ["project-planning", "issues", "proposals"],
+      "keywords": [
+        "project-planning",
+        "issues",
+        "proposals"
+      ],
       "category": "workflow"
     },
     {
@@ -30,8 +34,30 @@
         "name": "Chris Cox"
       },
       "license": "MIT",
-      "keywords": ["documentation", "docs-sync", "mkdocs"],
+      "keywords": [
+        "documentation",
+        "docs-sync",
+        "mkdocs"
+      ],
       "category": "documentation"
+    },
+    {
+      "name": "hol-guard",
+      "source": "./plugins/hol-guard",
+      "description": "Protect local AI coding-agent harnesses with HOL Guard before tools run.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Hashgraph Online",
+        "url": "https://github.com/hashgraph-online"
+      },
+      "license": "Apache-2.0",
+      "keywords": [
+        "security",
+        "ai-safety",
+        "runtime-protection",
+        "hol-guard"
+      ],
+      "category": "security"
     }
   ]
 }

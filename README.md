@@ -1,7 +1,7 @@
 # Agent Skills
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-2-brightgreen)](#skills)
+[![Skills](https://img.shields.io/badge/skills-3-brightgreen)](#skills)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet?logo=anthropic)](https://docs.anthropic.com/en/docs/claude-code)
 [![Codex](https://img.shields.io/badge/Codex-compatible-brightgreen?logo=openai)](https://github.com/openai/codex)
 [![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-compatible-4285F4?logo=google)](https://github.com/google-gemini/gemini-cli)
@@ -18,6 +18,7 @@ templates, your conventions, your docs structure — so it gets it right the fir
 |-------|-------------|
 | [project-planner](#project-planner) | Turns ideas, bugs, and feature requests into structured GitHub issues and proposals |
 | [docs-sync](#docs-sync) | Keeps docs in sync with code changes — updates, audits, and site navigation |
+| [hol-guard](#hol-guard) | Protects local coding-agent tool execution with HOL Guard before tools run |
 
 ---
 
@@ -133,6 +134,27 @@ site:
 
 </details>
 
+<a id="hol-guard"></a>
+### hol-guard
+
+**Protect local coding-agent tool execution before tools run.**
+
+This skill installs and invokes HOL Guard at the local harness boundary for Claude Code, Codex, Gemini CLI, OpenClaw, and other supported coding agents. Guard-owned install/run commands remain authoritative, approvals stay user-controlled, and protection is never claimed without a status check.
+
+**Prerequisite:** Python with isolated CLI installation via `pipx` recommended.
+
+```bash
+command -v hol-guard || pipx install hol-guard
+hol-guard status
+hol-guard detect --json
+hol-guard bootstrap
+hol-guard install <harness>
+hol-guard run <harness> --dry-run
+hol-guard run <harness>
+```
+
+The canonical skill content is maintained by Hashgraph Online under Apache-2.0 and keeps the supported harness names, approval workflow, evidence commands, and scanner guidance together.
+
 ---
 
 ## Installation
@@ -147,14 +169,15 @@ that works across all of them.
 <details open>
 <summary><strong>Claude Code</strong></summary>
 
-Add the marketplace, then install one or both skills:
+Add the marketplace, then install any skill:
 ```bash
 /plugin marketplace add chriscox/agent-skills
 /plugin install project-planner@chriscox-skills
 /plugin install docs-sync@chriscox-skills
+/plugin install hol-guard@chriscox-skills
 ```
 
-Each skill is an independent plugin — install one, both, or neither.
+Each skill is an independent plugin — install only the ones you want.
 Skills auto-activate based on context.
 
 Or load from a local clone:

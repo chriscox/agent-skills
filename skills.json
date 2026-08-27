@@ -9,6 +9,11 @@
       "name": "docs-sync",
       "path": "skills/docs-sync",
       "description": "Keep project documentation in sync with code changes. Manages doc site navigation."
+    },
+    {
+      "name": "hol-guard",
+      "path": "skills/hol-guard",
+      "description": "Protect local AI coding-agent harnesses with HOL Guard before tools run, with explicit approval and evidence workflows."
     }
   ]
 }
